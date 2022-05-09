@@ -10,8 +10,6 @@ const Posts = ({ setCurrentId }) => {
   useEffect(()=>{
    
   })  
-  //  if(!posts && !isLoading) return <h1>No Post</h1>;
-  console.log(posts);
   return (
     isLoading ? <CircularProgress /> : (
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>

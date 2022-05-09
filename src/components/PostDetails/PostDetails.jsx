@@ -27,17 +27,22 @@ function PostDetails() {
    dispatch({type:REMOVE_CURRENT_POST}) 
   }  
     
-  }, [id]);
+  },[id,dispatch]);
+
   useEffect(()=>{
     if(post)
     console.log(post.tags.join(','));
     dispatch(getSearchPost({search:'none',tags:post?.tags.join(',')}));
-  },[post])
+  },[post,dispatch])
 
   
 
 var openPost=(id)=>history.push(`/posts/${id}`)
-  if(!post)return null;
+  if(!post)return  (
+    <Paper elevation={6} className={classes.loadingPaper}>
+        <CircularProgress size="7em" />
+      </Paper>
+  )
   if (isLoading) {
     return (
       <Paper elevation={6} className={classes.loadingPaper}>
@@ -46,8 +51,9 @@ var openPost=(id)=>history.push(`/posts/${id}`)
     );
   }
   const recommendedPosts=posts?.filter(({_id}) => _id!==post._id)
-  console.log(recommendedPosts);
-  console.log(posts);
+  
+
+
   return (
     <Paper style={{ padding: "20px", borderRadius: "15px" }} elevation={6}>
       <div className={classes.card}>

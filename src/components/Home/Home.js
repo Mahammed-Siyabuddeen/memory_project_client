@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import {
   Container,
   AppBar,
-  Typography,
   Grow,
   Grid,
   Paper,
@@ -12,7 +11,7 @@ import {
 import ChipInput from "material-ui-chip-input";
 import { useDispatch } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
-import { getPosts, getSearchPost ,Demo} from "../../actions/posts";
+import { getSearchPost } from "../../actions/posts";
 import Posts from "../Posts/Posts";
 import Form from "../Form/Form";
 import Pagination from "../Pagination";
@@ -31,7 +30,6 @@ function Home() {
   const page = query.get("page") || 1;
   const searchQuery = query.get("searchQuery");
   const classes = useStyles();
-console.log(page,searchQuery);
   const searchPost = () => {
 
     if (search.trim() || tags) {
@@ -54,7 +52,6 @@ console.log(page,searchQuery);
 if(!search &&  searchQuery && !tags.length){
       history.push('/')
 }
-   console.log(tags);
   return (
     <Container maxWidth="lg">
       <Grow in>

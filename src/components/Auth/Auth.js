@@ -42,7 +42,7 @@ function Auth() {
        setError(err)
     }
     else{
-       var err=await dispatch(SignIn(form,history))
+        err=await dispatch(SignIn(form,history))
         setError(err)
     }
   };
@@ -60,13 +60,10 @@ function Auth() {
       dispatch({ type: AUTH, data: { result, token } });
       history.push("/");
     } catch (error) {
-      console.log(error);
     }
   };
   const googleError = () => {
-    console.log("goolge errr");
   };
-  console.log(Error);
   return (
     <Container component="main" maxWidth="xs">
    {Error && <Alert severity="error">{Error} — check it out!</Alert>}

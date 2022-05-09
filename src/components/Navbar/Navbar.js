@@ -1,7 +1,6 @@
-import React ,{useState,useEffect} from 'react'
-import { Container, AppBar, Typography, Grow, Grid,Button,Avatar,Toolbar } from '@material-ui/core';
+import React ,{useEffect} from 'react'
+import {  AppBar, Typography,Button,Avatar,Toolbar } from '@material-ui/core';
 import useStyles from './styles';
-import Posts from '../Posts/Posts';
 import memoriesLogo from '../../images/memoriesLogo.png'
 import memoriesText from '../../images/memoriesText.png'
 import {Link,useLocation,useHistory} from 'react-router-dom'
@@ -11,12 +10,10 @@ import decode from 'jwt-decode';
 
 function Navbar({user,setUser}) {
  
-  // const [user,setuser]=useState(JSON.parse(localStorage.getItem('profile')))
   const classes=useStyles()
   const dispatch=useDispatch()
   const location=useLocation()
   const history=useHistory()
-  // console.log(user);
 
   const logout=()=>{
   
@@ -37,7 +34,7 @@ function Navbar({user,setUser}) {
     }
   
   setUser(JSON.parse(localStorage.getItem('profile')))
-  },[location])
+  },[location,dispatch,setUser,user])
   return (
     <AppBar  className={classes.appBar} position="static" color="inherit">
         <Link to='/' className={classes.brandContainer}>

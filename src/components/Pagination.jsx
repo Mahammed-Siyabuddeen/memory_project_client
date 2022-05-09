@@ -11,7 +11,7 @@ function Paginate({page}) {
     
     useEffect(()=>{
       if(page) dispatch(getPosts(page))
-    },[page])
+    },[page,dispatch])
   return (
     <Pagination
     classes={{ui:classes.ui}}
