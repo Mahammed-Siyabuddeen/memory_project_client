@@ -58,11 +58,13 @@ export const deletePost = (id) => async (dispatch) => {
   } catch (error) {
   }
 };
-export const getPost = (id) => async (dispatch) => {
+export const getPost = (id,posts) => async (dispatch) => {
   try {
+    console.log(posts);
     dispatch({type:START_LOADING})
-    const { data } = await api.fetchPost(id);
-    dispatch({ type: FETCH_POST, payload: data });
+    const response  = await posts.find((post)=>post._id===id) ||await api.fetchPost(id);
+    console.log(response);
+    dispatch({ type: FETCH_POST, payload: response?.data||response });
     dispatch({type:END_LOADING})
   } catch (error) {
   }

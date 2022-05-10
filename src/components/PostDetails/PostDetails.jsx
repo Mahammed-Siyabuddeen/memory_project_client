@@ -21,19 +21,18 @@ function PostDetails() {
   const history = useHistory();
 
   useEffect(() => {
-    dispatch(getPost(id));
+    dispatch(getPost(id,posts));
     
   return()=>{
    dispatch({type:REMOVE_CURRENT_POST}) 
   }  
     
-  },[id,dispatch]);
-
+  },[id]);
   useEffect(()=>{
     if(post)
     console.log(post.tags.join(','));
     dispatch(getSearchPost({search:'none',tags:post?.tags.join(',')}));
-  },[post,dispatch])
+  },[post])
 
   
 

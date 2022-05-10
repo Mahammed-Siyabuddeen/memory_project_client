@@ -62,7 +62,8 @@ function Auth() {
     } catch (error) {
     }
   };
-  const googleError = () => {
+  const googleError = (error) => {
+    console.log(error);
   };
   return (
     <Container component="main" maxWidth="xs">

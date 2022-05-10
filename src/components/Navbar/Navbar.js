@@ -34,7 +34,7 @@ function Navbar({user,setUser}) {
     }
   
   setUser(JSON.parse(localStorage.getItem('profile')))
-  },[location,dispatch,setUser,user])
+  },[location])
   return (
     <AppBar  className={classes.appBar} position="static" color="inherit">
         <Link to='/' className={classes.brandContainer}>
