@@ -10,12 +10,12 @@ import useStyles from "./styles";
 import moment from "moment";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getPost,getSearchPost } from "../../actions/posts";
+import { getPost,getRecommendedPost,getSearchPost } from "../../actions/posts";
 import { REMOVE_CURRENT_POST } from "../../constants/actionTypes";
 import CommentSection from "./CommentSection";
 function PostDetails() {
   const classes = useStyles();
-  const { posts, post, isLoading } = useSelector((state) => state.posts);
+  const { posts, post, isLoading,recommended_post } = useSelector((state) => state.posts);
   const { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -31,7 +31,7 @@ function PostDetails() {
   useEffect(()=>{
     if(post)
     console.log(post.tags.join(','));
-    dispatch(getSearchPost({search:'none',tags:post?.tags.join(',')}));
+    dispatch(getRecommendedPost({search:'none',tags:post?.tags.join(',')}));
   },[post])
 
   
@@ -49,7 +49,7 @@ var openPost=(id)=>history.push(`/posts/${id}`)
       </Paper>
     );
   }
-  const recommendedPosts=posts?.filter(({_id}) => _id!==post._id)
+  const recommendedPosts=recommended_post?.filter(({_id}) => _id!==post._id)
   
 
 

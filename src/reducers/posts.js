@@ -9,7 +9,8 @@ import {
   LIKE,
   FETCH_POST,
   COMMENT,
-  REMOVE_CURRENT_POST
+  REMOVE_CURRENT_POST,
+  RECOMMENDED_POST
 } from "../constants/actionTypes";
 
 export default (state = { isLoading: false, posts: [] }, action) => {
@@ -29,6 +30,8 @@ export default (state = { isLoading: false, posts: [] }, action) => {
       return {...state,post: action.payload}
     case SEARCH_POST:
       return { ...state, posts: action.payload };
+     case RECOMMENDED_POST:
+       return {...state,recommended_post:action.payload} 
     case LIKE:
       return {
         ...state,

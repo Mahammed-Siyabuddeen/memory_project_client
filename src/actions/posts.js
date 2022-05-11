@@ -1,4 +1,4 @@
-import { FETCH_ALL,FETCH_POST,START_LOADING,END_LOADING ,CREATE,SEARCH_POST, UPDATE, DELETE, LIKE, COMMENT } from '../constants/actionTypes';
+import { FETCH_ALL,FETCH_POST,START_LOADING,END_LOADING ,CREATE,SEARCH_POST, UPDATE, DELETE, LIKE, COMMENT, RECOMMENDED_POST } from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
@@ -9,6 +9,16 @@ export const getSearchPost=(searchQuery)=>async (dispatch)=>{
     dispatch({type: SEARCH_POST, payload:data })
     dispatch({type:END_LOADING})
    } catch (error) {
+   }
+}
+export const getRecommendedPost=(searchQuery)=>async(dispatch)=>{
+   try {
+     dispatch({type:START_LOADING})
+     const {data:{data}}=await api.getSearchPost(searchQuery)
+     dispatch({type:RECOMMENDED_POST,payload:data})
+     dispatch({type:END_LOADING})
+   } catch (error) {
+     
    }
 }
 
