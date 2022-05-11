@@ -87,7 +87,7 @@ var openPost=(id)=>history.push(`/posts/${id}`)
         </div>
       </div>
 
-      {recommendedPosts.length &&(
+      {recommendedPosts.length  ? (
         
         <div className={classes.section}>
             <Typography gutterBottom variant='h6'>You may Like Also</Typography>
@@ -108,7 +108,7 @@ var openPost=(id)=>history.push(`/posts/${id}`)
           </div>
         
      
-      )}
+      ):null}
 
     </Paper>
   );
