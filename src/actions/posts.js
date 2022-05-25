@@ -68,6 +68,7 @@ export const deletePost = (id) => async (dispatch) => {
   } catch (error) {
   }
 };
+
 export const getPost = (id,posts) => async (dispatch) => {
   try {
     console.log(posts);

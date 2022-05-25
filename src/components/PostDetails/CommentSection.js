@@ -1,5 +1,5 @@
 import { Button, TextField, Typography } from '@material-ui/core';
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch} from 'react-redux';
 import { commentPost } from '../../actions/posts';
 import useStyle from './styles'
@@ -14,12 +14,14 @@ function CommentSection({post}){
 
     const handleClick=async()=>{
        var finalComment=`${user.result?.name} :${comment}`;
-       var newComments=await dispatch(commentPost(finalComment,post._id))
+        dispatch(commentPost(finalComment,post._id))
   
-     setComments(newComments)
+     setComments([...comments,finalComment])
      setComment('')
-     commentRef.current.scrollIntoView({behavior:'smooth'})
     }
+    useEffect(()=>{
+        commentRef.current.scrollIntoView({behavior:'smooth'})
+    },[comments])
     return(
         <div className={classes.commentsOuterContainer}>
             <div className={classes.commentsInnerContainer}>
